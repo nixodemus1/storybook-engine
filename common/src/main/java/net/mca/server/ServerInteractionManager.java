@@ -79,7 +79,7 @@ public class ServerInteractionManager {
         }
 
         if (playerData.hasMail()) {
-            playerData.showMailNotification(player);
+            PlayerSaveData.showMailNotification(player);
         }
     }
 

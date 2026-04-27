@@ -164,7 +164,9 @@ public class Residency {
     }
 
     private void setBuilding(Building b) {
-        List<BlockPos> group = b.getBlocksOfGroup(new Identifier("minecraft:beds"));
+        List<BlockPos> group = b.getBuildingType()
+                .getGroups(b.getBlocks())
+                .getOrDefault(new Identifier("minecraft:beds"), java.util.Collections.emptyList());
         if (group.size() > 0) {
             setBuilding(b, group.get(b.getResidents().size() % group.size()));
         } else {
