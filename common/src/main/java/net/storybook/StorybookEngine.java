@@ -4,6 +4,8 @@ import net.storybook.dialogue.DialogueManager;
 import net.storybook.encounter.EncounterManager;
 import net.storybook.narration.NarrationManager;
 import net.storybook.session.StorySession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Main entrypoint and root coordinator for the Storybook Engine mod.
@@ -42,6 +44,8 @@ public class StorybookEngine {
 
     public static final String MOD_ID = "storybook";
 
+    private static final Logger LOGGER = LogManager.getLogger(StorybookEngine.class);
+
     private static StorybookEngine instance;
 
     private StorybookEngine() {}
@@ -64,7 +68,8 @@ public class StorybookEngine {
         NarrationManager.getInstance();
         DialogueManager.getInstance();
 
-        System.out.println("[StorybookEngine] Initialised. Ready for session.");
+        LOGGER.info("[StorybookEngine] Initialised. Ready for session.");
+        LOGGER.info("[StorybookEngine] Storybook Engine is ALIVE");
 
         // TODO: register server event listeners for session tick (freeze enforcement etc.)
         // TODO: load default encounter presets from data/storybook/encounters/*.json

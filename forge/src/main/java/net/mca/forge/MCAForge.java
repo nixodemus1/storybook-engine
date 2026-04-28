@@ -13,6 +13,7 @@ import net.mca.forge.cobalt.network.NetworkHandlerImpl;
 import net.mca.forge.item.ItemsMCAForge;
 import net.mca.network.MessagesMCA;
 import net.mca.resources.*;
+import net.storybook.StorybookEngine;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -41,6 +42,7 @@ public final class MCAForge {
     @SubscribeEvent
     public static void onFMLCommonSetupEvent(FMLCommonSetupEvent event) {
         TradeOffersMCA.bootstrap();
+        event.enqueueWork(() -> StorybookEngine.getInstance().init());
     }
 
     private void onAddReloadListener(AddReloadListenerEvent event) {
